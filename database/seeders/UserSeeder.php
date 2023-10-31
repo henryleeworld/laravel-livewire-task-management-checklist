@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name'     => '管理員',
                 'email'    => 'admin@admin.com',
-                'password' => bcrypt('password'),
+                'password' => 'password',
                 'is_admin' => 1
             ],
         );
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             [
                 'name'     => '使用者',
                 'email'    => 'user@user.com',
-                'password' => bcrypt('password'),
+                'password' => 'password',
                 'is_admin' => 0
             ],
         );

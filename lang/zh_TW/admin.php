@@ -146,7 +146,7 @@ return [
             ],
         ],
         'welcome' => [
-            'title'   => 'Welcome',
+            'title'   => '歡迎光臨',
 		    'content' => [
             ],
         ],

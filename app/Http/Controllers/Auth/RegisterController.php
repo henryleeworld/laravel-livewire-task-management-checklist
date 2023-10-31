@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Newsletter;
 
@@ -69,7 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'website' => $data['website'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
         ]);
 
         Newsletter::subscribe($data['email']);

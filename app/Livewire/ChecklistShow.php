@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Task;
 use Carbon\Carbon;
@@ -93,10 +93,10 @@ class ChecklistShow extends Component
                 if (is_null($user_task->completed_at)) {
                     $user_task->update(['completed_at' => now()]);
                     $this->completed_tasks[] = $task_id;
-                    $this->emit('task_complete', $task_id, $task->checklist_id);
+                    $this->dispatch('task_complete', $task_id, $task->checklist_id);
                 } else {
                     $user_task->update(['completed_at' => NULL]);
-                    $this->emit('task_complete', $task_id, $task->checklist_id, -1);
+                    $this->dispatch('task_complete', $task_id, $task->checklist_id, -1);
                 }
             } else {
                 $user_task = $task->replicate();
@@ -105,7 +105,7 @@ class ChecklistShow extends Component
                 $user_task['completed_at'] = now();
                 $user_task->save();
                 $this->completed_tasks[] = $task_id;
-                $this->emit('task_complete', $task_id, $task->checklist_id);
+                $this->dispatch('task_complete', $task_id, $task->checklist_id);
             }
         }
     }
@@ -118,10 +118,10 @@ class ChecklistShow extends Component
         if ($user_task) {
             if (is_null($user_task->added_to_my_day_at)) {
                 $user_task->update(['added_to_my_day_at' => now()]);
-                $this->emit('user_tasks_counter_change', 'my_day');
+                $this->dispatch('user_tasks_counter_change', 'my_day');
             } else {
                 $user_task->update(['added_to_my_day_at' => NULL]);
-                $this->emit('user_tasks_counter_change', 'my_day', -1);
+                $this->dispatch('user_tasks_counter_change', 'my_day', -1);
             }
         } else {
             $task = Task::find($task_id);
@@ -130,7 +130,7 @@ class ChecklistShow extends Component
             $user_task['task_id'] = $task_id;
             $user_task['added_to_my_day_at'] = now();
             $user_task->save();
-            $this->emit('user_tasks_counter_change', 'my_day');
+            $this->dispatch('user_tasks_counter_change', 'my_day');
         }
         $this->current_task = $user_task;
     }
@@ -146,10 +146,10 @@ class ChecklistShow extends Component
         if ($user_task) {
             if ($user_task->is_important == 0) {
                 $user_task->update(['is_important' => 1]);
-                $this->emit('user_tasks_counter_change', 'important');
+                $this->dispatch('user_tasks_counter_change', 'important');
             } else {
                 $user_task->update(['is_important' => 0]);
-                $this->emit('user_tasks_counter_change', 'important', -1);
+                $this->dispatch('user_tasks_counter_change', 'important', -1);
             }
         } else {
             $task = Task::find($task_id);
@@ -158,7 +158,7 @@ class ChecklistShow extends Component
             $user_task['task_id'] = $task_id;
             $user_task['is_important'] = 1;
             $user_task->save();
-            $this->emit('user_tasks_counter_change', 'important');
+            $this->dispatch('user_tasks_counter_change', 'important');
         }
         $this->current_task = $user_task;
     }
@@ -179,10 +179,10 @@ class ChecklistShow extends Component
         if ($user_task) {
             if (is_null($due_date)) {
                 $user_task->update(['due_date' => NULL]);
-                $this->emit('user_tasks_counter_change', 'planned', -1);
+                $this->dispatch('user_tasks_counter_change', 'planned', -1);
             } else {
                 $user_task->update(['due_date' => $due_date]);
-                $this->emit('user_tasks_counter_change', 'planned');
+                $this->dispatch('user_tasks_counter_change', 'planned');
             }
         } else {
             $task = Task::find($task_id);
@@ -191,7 +191,7 @@ class ChecklistShow extends Component
             $user_task['task_id'] = $task_id;
             $user_task['due_date'] = $due_date;
             $user_task->save();
-            $this->emit('user_tasks_counter_change', 'planned');
+            $this->dispatch('user_tasks_counter_change', 'planned');
         }
         $this->current_task = $user_task;
     }

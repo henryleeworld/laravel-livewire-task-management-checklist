@@ -1,4 +1,4 @@
-# Laravel 8 Livewire 任務管理清單
+# Laravel 10 Livewire 任務管理清單
 
 你認為只有高知識份子，或是那些天生很有組織架構的人，才有能力與動機，去使用清單管理來追求高生產力嗎？其實，完全不需要任何特殊科技、學位或天賦，只需要一套日常慣例和一個可靠的系統，就能養成使用清單的好習慣，不迷失在每天龐大的訊息量裡。
 
@@ -16,17 +16,21 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
+- 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移，並執行資料庫填充（如果要測試的話）。
+```sh
+$ php artisan migrate --seed
+```
 - 執行 __Artisan__ 指令的 __storage:link__ 來建立連結符號，讓公用可存取的檔案維持在一個目錄中。
 ```sh
 $ php artisan storage:link
 ```
-- 執行安裝 Laravel Mix 引用的依賴項目，並執行所有 Mix 任務。
+- 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
 ```sh
-$ npm install && npm run dev
+$ npm install
 ```
-- 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移，並執行資料庫填充（如果要測試的話）。
+- 執行正式環境版本化資源管道並編譯。
 ```sh
-$ php artisan migrate --seed
+$ npm run build
 ```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
 - 你可以經由 `/login` 來進行登入，以管理者身分使用預設的電子郵件和密碼分別為 __admin@admin.com__ 和 __password__ ；以使用者身分使用預設的電子郵件和密碼分別為 __user@user.com__ 和 __password__ 。
@@ -34,8 +38,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/vsdg2gd.png)
+![](https://i.imgur.com/2vThebd.png)
 > 以管理者身分，確實切分任務，把大事化成能夠處理的小事
 
-![](https://i.imgur.com/TyPiXUj.png)
+![](https://i.imgur.com/7KlXRgL.png)
 > 以使用者身分，捕捉自己的待辦任務，將壓力移出大腦，進而獲取工作上的終極生產力
