@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name'     => '管理員',
                 'email'    => 'admin@admin.com',
-                'password' => 'password',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'is_admin' => 1
             ],
         );
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             [
                 'name'     => '使用者',
                 'email'    => 'user@user.com',
-                'password' => 'password',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'is_admin' => 0
             ],
         );
